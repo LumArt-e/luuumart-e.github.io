@@ -3,27 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LumArt - Art Studio</title>
+  <title><span data-lang="title">LumArt - Art Studio</span></title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <div class="lang-toggle">
+    <button onclick="switchLang('es')">ES</button>
+    <button onclick="switchLang('en')">EN</button>
+  </div>
+
   <canvas id="bg-canvas"></canvas>
 
-  <nav class="scroll-nav">
-    <a href="#about">&#8675;</a>
-    <a href="#products">&#8675;</a>
-    <a href="#contact">&#8675;</a>
-    <a href="#top">&#8673;</a>
+  <nav class="tab-nav">
+    <button data-tab="top">Inicio</button>
+    <button data-tab="about">Sobre Nosotros</button>
+    <button data-tab="products">Galería</button>
+    <button data-tab="contact">Contacto</button>
   </nav>
 
-  <header id="top">
-    <h1 id="lumart-title">LumArt - Art Studio</h1>
-    <p class="tagline">Un viaje visual a través de la historia y la expresión artística</p>
+  <header id="top" class="tab-content">
+    <h1 id="lumart-title"><span data-lang="title">LumArt - Art Studio</span></h1>
+    <p class="tagline"><span data-lang="tagline">Un viaje visual a través de la historia y la expresión artística</span></p>
   </header>
 
   <main>
-    <section class="about" id="about">
-      <h2>Sobre Nosotros</h2>
+    <section class="about tab-content" id="about">
+      <h2 data-lang="about_title">Sobre Nosotros</h2>
       <p>
         En <strong>LumArt</strong>, somos un estudio de arte especializado en artes plásticas, 
         dominando diversas técnicas de pintura y estilos visuales. Nuestras obras incluyen tanto 
@@ -33,16 +39,16 @@
       </p>
     </section>
 
-    <section class="products" id="products">
-      <h2>Galería de Obras</h2>
+    <section class="products tab-content" id="products">
+      <h2 data-lang="products_title">Galería de Obras</h2>
       <div class="gallery">
-        <div class="item"><img src="images/art1.jpg" alt="Arte 1"><p>Obra de arte 1 - Técnica mixta<br><strong>$100 USD</strong></p></div>
-        <div class="item"><img src="images/art2.jpg" alt="Arte 2"><p>Obra de arte 2 - Óleo sobre lienzo<br><strong>$120 USD</strong></p></div>
+        <div class="item"><img src="images/art1.jpg" alt="Arte 1"><p><span data-lang="product1">Obra de arte 1 - Técnica mixta</span><br><strong>$100 USD</strong></p></div>
+        <div class="item"><img src="images/art2.jpg" alt="Arte 2"><p><span data-lang="product2">Obra de arte 2 - Óleo sobre lienzo</span><br><strong>$120 USD</strong></p></div>
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <h2>Contacto</h2>
+    <section class="contact tab-content" id="contact">
+      <h2 data-lang="contact_title">Contacto</h2>
       <ul>
         <li><strong>Teléfono:</strong> (por completar)</li>
         <li><strong>Email:</strong> (por completar)</li>
@@ -53,11 +59,50 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 LumArt - Art Studio. Todos los derechos reservados.</p>
-  </footer>
+    <p>&copy; 2025 <span data-lang="title">LumArt - Art Studio</span>. Todos los derechos reservados.</p>
+  
+  <a href="https://wa.me/593999999999" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+    💬
+  </a>
+</footer>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="scripts/bg.js"></script>
   <script src="scripts/dynamicTitle.js"></script>
+  <script type="module" src="scripts/tabs.js"></script>
+<script>
+const translations = {
+  es: {
+    title: "LumArt - Art Studio",
+    tagline: "Un viaje visual a través de la historia y la expresión artística",
+    about_title: "Sobre Nosotros",
+    products_title: "Galería de Obras",
+    contact_title: "Contacto",
+    product1: "Obra de arte 1 - Técnica mixta",
+    product2: "Obra de arte 2 - Óleo sobre lienzo",
+    footer: "© 2025 LumArt - Art Studio. Todos los derechos reservados."
+  },
+  en: {
+    title: "LumArt - Art Studio",
+    tagline: "A visual journey through history and artistic expression",
+    about_title: "About Us",
+    products_title: "Gallery",
+    contact_title: "Contact",
+    product1: "Artwork 1 - Mixed Technique",
+    product2: "Artwork 2 - Oil on Canvas",
+    footer: "© 2025 LumArt - Art Studio. All rights reserved."
+  }
+};
+
+function switchLang(lang) {
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    const key = el.getAttribute('data-lang');
+    if (translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+}
+</script>
 </body>
 </html>

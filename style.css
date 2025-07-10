@@ -63,3 +63,88 @@ footer {
   padding: 20px;
   background: #000;
 }
+
+.tab-nav {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.tab-nav button {
+  background: #222;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.tab-nav button:hover {
+  background: #444;
+}
+
+.tab-content {
+  display: none;
+}
+
+
+/* WhatsApp floating button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 60px;
+  z-index: 100;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tab-nav {
+    flex-direction: column;
+    left: auto;
+    right: 10px;
+    top: 80px;
+  }
+
+  .gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery .item {
+    width: 90%;
+  }
+}
+
+.lang-toggle {
+  position: fixed;
+  top: 10px;
+  right: 100px;
+  z-index: 30;
+}
+
+.lang-toggle button {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin: 0 4px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.lang-toggle button:hover {
+  background: #666;
+}
